@@ -1,58 +1,209 @@
+/* General Body Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
+    background-attachment: fixed;
+    color: #333;
 }
 
+/* Header Styles */
 header {
-    background-color: #333;
+    background: linear-gradient(135deg, #5C258D 0%, #4389A2 100%);
     color: white;
-    padding: 20px;
+    padding: 40px;
     text-align: center;
+    border-bottom: 5px solid #ffffff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
 }
 
+header:hover {
+    background: linear-gradient(135deg, #4389A2 0%, #5C258D 100%);
+}
+
+/* Section Containers */
 #status, #controls, #history {
-    margin: 20px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 30px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#status:hover, #controls:hover, #history:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 #status h2, #controls h2, #history h2 {
     margin-top: 0;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #5C258D;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+/* Input Fields */
 input[type="number"] {
-    padding: 5px;
-    margin-right: 10px;
-    width: 80px;
+    padding: 12px;
+    margin-right: 15px;
+    width: 120px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
 }
 
+input[type="number"]:focus {
+    border-color: #5C258D;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(92, 37, 141, 0.2);
+    outline: none;
+}
+
+/* Button Styles */
 button {
-    padding: 10px 15px;
-    background-color: #4CAF50;
+    padding: 12px 18px;
+    background-color: #5C258D;
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 5px 15px rgba(92, 37, 141, 0.2);
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #9face6;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(92, 37, 141, 0.3);
 }
 
+button:active {
+    transform: translateY(2px);
+}
+
+/* Table Styles */
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 20px;
 }
 
 table, th, td {
     border: 1px solid #ddd;
+    border-radius: 8px;
 }
 
 th, td {
-    padding: 8px;
+    padding: 15px;
     text-align: center;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+th {
+    background-color: #5C258D;
+    color: white;
+    font-weight: bold;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+tr:hover td {
+    background-color: #eee;
+    cursor: pointer;
+}
+
+/* Device Status Styles */
+#device-status {
+    margin: 20px 0;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+#device-status:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(92, 37, 141, 0.15), rgba(92, 37, 141, 0));
+    transform: skewY(-15deg);
+    transition: transform 0.5s ease;
+}
+
+#device-status:hover:before {
+    transform: skewY(0);
+}
+
+#status-text {
+    margin-left: 15px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+/* Device Status States */
+#status-text.default {
+    background-color: #6c757d; /* Gray */
+}
+
+#status-text.connected {
+    background-color: #28a745; /* Green */
+}
+
+#status-text.disconnected {
+    background-color: #dc3545; /* Red */
+}
+
+#status-text.unknown {
+    background-color: #ffc107; /* Yellow */
+    color: #000000; /* Black text for contrast */
+}
+
+#status-text:hover {
+    transform: scale(1.1);
+}
+
+/* Animation for header */
+@keyframes headerGlow {
+    0% {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 60px rgba(92, 37, 141, 0.7);
+    }
+    100% {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    }
+}
+
+header h1 {
+    animation: headerGlow 3s ease-in-out infinite;
 }
